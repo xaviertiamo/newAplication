@@ -65,16 +65,13 @@ let getsalario = (empleados)=> {
 
 
 
-getempleado(1 ).then(empleados => {
-	
-console.log('empleados de BD', empleados); 
-    getsalario(empleados).then(resp  => {
-	     console.log(`el salario de ${resp.nombre} es de ${ resp.salario}$`); 
-     }, (err)=>{
-     	console.log(err);
+getempleado(1).then(empleados => {
 
-     });
-
-}, (err)=>{
+	return getsalario(empleados);
+})
+.then(resp => {
+     console.log(`el salario de ${ resp.nombre} es de ${ resp.salario}$`);
+})
+.catch( err => {
 	console.log(err);
-}); 
+});
